@@ -6,6 +6,17 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    Reads in song file in JSON format, creates records of songs and artists
+    and inserts into the song_data and artist_data tables.
+
+    Args:
+        cur (object): psycopg2 cursor object.
+        filepath (str): Path to the JSON files.
+
+    Returns:
+        None
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +30,17 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    Reads in log files in JSON format, extracts and processes information related to
+    timestamp, user, and songplay, and inserts them into the respective tables.
+
+    Args:
+        cur (object): psycopg2 cursor object.
+        filepath (str): Path to the JSON files.
+
+    Returns:
+        None
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -62,6 +84,19 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    Iterates over all the data (JSON files) in a directory and processes them
+    using process_song_file() and process_log_file() functions.
+
+    Args:
+        cur (object): psycopg2 cursor object.
+        conn (object): psycopg2 connection object.
+        filepath (str): Path to the directory containing input files.
+        func (function) : Functions for data processing. 
+
+    Returns:
+        None
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
