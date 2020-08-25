@@ -62,12 +62,12 @@ songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplays
 (
   songplay_id    integer      IDENTITY(0,1) primary key,
-  start_time     timestamp    not null distkey sortkey,  
+  start_time     timestamp    not null,
   user_id        integer      not null,
   level          varchar,
   song_id        varchar      not null,
   artist_id      varchar      not null,
-  session_id     integer      not null,
+  session_id     integer,
   location       varchar,
   user_agent     varchar
 );
@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS songplays
 user_table_create = ("""
 CREATE TABLE IF NOT EXISTS users
 (
-  user_id       integer      not null primary key sortkey,
-  first_name    varchar      not null,
-  last_name     varchar      not null,
+  user_id       integer      not null primary key,
+  first_name    varchar,
+  last_name     varchar,
   gender        varchar(1),
   level         varchar
 )
@@ -89,8 +89,8 @@ song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs
 (
   song_id      varchar    not null primary key,
-  title        varchar    not null sortkey,
-  artist_id    varchar    not null distkey,
+  title        varchar,
+  artist_id    varchar,
   year         integer,
   duration     float
 );
@@ -99,8 +99,8 @@ CREATE TABLE IF NOT EXISTS songs
 artist_table_create = ("""
 CREATE TABLE IF NOT EXISTS artists
 (
-  artist_id    varchar    not null primary key sortkey,
-  name         varchar    not null,
+  artist_id    varchar    not null primary key,
+  name         varchar,
   location     varchar,
   latitude     float,
   longitude    float
@@ -111,13 +111,13 @@ diststyle all;
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS time
 (
-  start_time    timestamp    not null primary key distkey sortkey,
-  hour          integer      not null,
-  day           integer      not null,
-  week          integer      not null,
-  month         integer      not null,
-  year          integer      not null,
-  weekday       integer      not null
+  start_time    timestamp    not null primary key,
+  hour          integer,
+  day           integer,
+  week          integer,
+  month         integer,
+  year          integer,
+  weekday       integer
 );
 """)
 
