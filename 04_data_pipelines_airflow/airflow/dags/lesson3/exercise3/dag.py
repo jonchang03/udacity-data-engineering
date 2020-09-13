@@ -83,7 +83,10 @@ location_traffic_task = PostgresOperator(
 #
 # TODO: Reorder the Graph once you have moved the checks
 #
-trips_subdag_task >> check_trips
-stations_subdag_task >> check_stations
-check_stations >> location_traffic_task
-check_trips >> location_traffic_task
+# trips_subdag_task >> check_trips
+# stations_subdag_task >> check_stations
+# check_stations >> location_traffic_task
+# check_trips >> location_traffic_task
+
+trips_subdag_task >> location_traffic_task
+stations_subdag_task >> location_traffic_task
