@@ -51,12 +51,12 @@ And below is an example of what the data in a log file, 2018-11-12-events.json, 
 │   └── schema.png
 └── sql_queries.py
 ```
-`CreateRedshiftCluster.ipynb` is a Jupyter notebook based off of the Infrastructure-as-code exercise from the lesson. It allows us to create the Redshift cluster, see its status, run analytical queries to verify our ETL, and clean up cluster resources.
-`README.md` is where you'll provide discussion on your process and decisions for this ETL pipeline.
-`create_table.py` is where you'll create your fact and dimension tables for the star schema in Redshift.
-`dwh.cfg` is a config file which contains the AWS Key and Secret, some of the cluster and Redshift parameters, and the S3 bucket locations
-`etl.py` is where you'll load data from S3 into staging tables on Redshift and then process that data into your analytics tables on Redshift.  
-`sql_queries.py` is where you'll define you SQL statements, which will be imported into the two other files above.  
+* `CreateRedshiftCluster.ipynb` is a Jupyter notebook based off of the Infrastructure-as-code exercise from the lesson. It allows us to create the Redshift cluster, see its status, run analytical queries to verify our ETL, and clean up cluster resources.  
+* `README.md` is where you'll provide discussion on your process and decisions for this ETL pipeline.  
+* `create_table.py` is where you'll create your fact and dimension tables for the star schema in Redshift.  
+* `dwh.cfg` is a config file which contains the AWS Key and Secret, some of the cluster and Redshift parameters, and the S3 bucket locations
+* `etl.py` is where you'll load data from S3 into staging tables on Redshift and then process that data into your analytics tables on Redshift.  
+* `sql_queries.py` is where you'll define you SQL statements, which will be imported into the two other files above.  
 
 
 ### Instructions
