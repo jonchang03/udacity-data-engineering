@@ -6,7 +6,6 @@ from airflow.utils.decorators import apply_defaults
 class StageToRedshiftOperator(BaseOperator):
     """
     Runs a SQL COPY command to load JSON files from S3 to Amazon Redshift.
-
     :param redshift_conn_id: reference to a specific redshift database
     :type redshift_conn_id: str
     :param aws_credentials_id: reference to a specific S3 connection
@@ -21,7 +20,6 @@ class StageToRedshiftOperator(BaseOperator):
     :type region: str
     :param json_path: use a json_path file to parse JSON source data, otherwise use 'auto'
     :type json_path: str
-
     """
     ui_color = '#358140'
     template_fields = ("s3_key",)
@@ -36,7 +34,7 @@ class StageToRedshiftOperator(BaseOperator):
         TIMEFORMAT 'epochmillisecs'
         BLANKSASNULL EMPTYASNULL;
     """
-
+    
     @apply_defaults
     def __init__(self,
                  redshift_conn_id="",
@@ -63,7 +61,7 @@ class StageToRedshiftOperator(BaseOperator):
         credentials = aws_hook.get_credentials()
         redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
         
-        self.log.info("Clearing data from destination Redshift table")
+        self.log.info("Clearing data from destination Redshift table..")
         redshift.run("DELETE FROM {}".format(self.table))
         
         self.log.info("Copying data from S3 to Redshift")
@@ -80,8 +78,3 @@ class StageToRedshiftOperator(BaseOperator):
         redshift.run(formatted_sql)
         
         self.log.info(f"Successful copy of {self.table} from S3 to Redshift")
-
-
-
-
-
