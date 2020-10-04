@@ -60,7 +60,7 @@ class SqlQueries:
             artistid,
             name,
             location,
-            lattitude,
+            latitude,
             longitude    
         )
         SELECT distinct artist_id, artist_name, artist_location, artist_latitude, artist_longitude
